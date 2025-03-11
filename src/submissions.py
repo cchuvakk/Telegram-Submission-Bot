@@ -57,8 +57,8 @@ class Submissions:
         submission_id = await self.db.insertSubmission(user_id, message_type, file_id, message_id, 0, caption)
 
         anonimity_keyboard = [
-            [InlineKeyboardButton(text = "Да", callback_data=f"anon:{submission_id}")],
-            [InlineKeyboardButton(text = "Нет", callback_data=f"public:{submission_id}")]
+            [InlineKeyboardButton(text = "✅ Да", callback_data=f"anon:{submission_id}")],
+            [InlineKeyboardButton(text = "❌ Нет", callback_data=f"public:{submission_id}")]
         ]
 
         anonymous_reply_markup = InlineKeyboardMarkup(anonimity_keyboard)
@@ -114,9 +114,9 @@ class Submissions:
             await query.delete_message()
 
             keyboard = [
-                [InlineKeyboardButton(text = "Запостить", callback_data=f"post:{submissionid}")],
-                [InlineKeyboardButton(text = "Не постить", callback_data=f"refuse:{submissionid}")],
-                [InlineKeyboardButton(text = "Забанить пользователя", callback_data=f"ban:{submissionid}")]
+                [InlineKeyboardButton(text = "✅ Запостить", callback_data=f"post:{submissionid}")],
+                [InlineKeyboardButton(text = "❌ Не постить", callback_data=f"refuse:{submissionid}")],
+                [InlineKeyboardButton(text = "🔒 Забанить пользователя", callback_data=f"ban:{submissionid}")]
             ]
 
             reply_markup = InlineKeyboardMarkup(keyboard)
