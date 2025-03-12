@@ -39,6 +39,6 @@ CREATE TABLE submissions (
 
 COMMIT;
 ```
-After that, you can launch main.py (located in src folder)
+After that, you can launch main.py (located in the src folder).
 
 Right now this bot has only Russian language, other may be added later.
