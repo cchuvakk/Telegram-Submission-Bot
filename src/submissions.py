@@ -68,7 +68,9 @@ class Submissions:
             reply_markup=anonymous_reply_markup)
             
 
-    async def sendSubmissionToChannel(self, username: str, messagetype: str, anonymous: bool, file_id: str, file_caption: str, context: ContextTypes.DEFAULT_TYPE) -> None:
+    async def sendSubmissionToChannel(self, username: str, messagetype: str, 
+                                      anonymous: bool, file_id: str, 
+                                      file_caption: str, context: ContextTypes.DEFAULT_TYPE) -> None:
         caption = f'Отправлено {username}'
 
         if(anonymous):
@@ -122,15 +124,27 @@ class Submissions:
             reply_markup = InlineKeyboardMarkup(keyboard)
 
             if(submission_type == "Photo"):
-                await context.bot.send_photo(chat_id = self.__admin_chatid, photo = file_id, caption = f"Фотку прислал @{username} {db_file_caption}", reply_markup = reply_markup)
+                await context.bot.send_photo(chat_id = self.__admin_chatid, 
+                                             photo = file_id, caption = f"Фотку прислал @{username} {db_file_caption}", 
+                                             reply_markup = reply_markup)
             elif(submission_type == "Video"):
-                await context.bot.send_video(chat_id = self.__admin_chatid, video= file_id, caption = f"Видео прислал @{username} {db_file_caption}", reply_markup = reply_markup)
+                await context.bot.send_video(chat_id = self.__admin_chatid, 
+                                             video= file_id, 
+                                             caption = f"Видео прислал @{username} {db_file_caption}", 
+                                             reply_markup = reply_markup)
             elif(submission_type == "Animation"):
-                await context.bot.send_animation(chat_id = self.__admin_chatid, animation = file_id, caption = f"Файлик прислал @{username} {db_file_caption}", reply_markup = reply_markup)
+                await context.bot.send_animation(chat_id = self.__admin_chatid, 
+                                                 animation = file_id, caption = f"Файлик прислал @{username} {db_file_caption}", 
+                                                 reply_markup = reply_markup)
             elif(submission_type == "Voice Message"):
-                await context.bot.send_voice(chat_id = self.__admin_chatid, voice = file_id, caption = f"Голосовое прислал @{username} {db_file_caption}", reply_markup = reply_markup)
+                await context.bot.send_voice(chat_id = self.__admin_chatid, 
+                                             voice = file_id, 
+                                             caption = f"Голосовое прислал @{username} {db_file_caption}", 
+                                             reply_markup = reply_markup)
             elif(submission_type == "Text"):
-                await context.bot.send_message(chat_id = self.__admin_chatid, text = file_id + f"\n\nТекст прислал @{username}", reply_markup = reply_markup)
+                await context.bot.send_message(chat_id = self.__admin_chatid, 
+                                               text = file_id + f"\n\nТекст прислал @{username}", 
+                                               reply_markup = reply_markup)
 
         elif(action == "post"):
             if(not await self.db.userAdmin(query.from_user.id)):

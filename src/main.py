@@ -13,7 +13,9 @@ def main() -> None:
     adminchatid: int = -1002311508130
 
     media_handler = MessageHandler((filters.ChatType.PRIVATE & ~filters.COMMAND) & 
-                                   (filters.PHOTO | filters.VIDEO | filters.ANIMATION | filters.VOICE | filters.TEXT), 
+                                   (filters.PHOTO | filters.VIDEO | 
+                                    filters.ANIMATION | filters.VOICE | 
+                                    filters.TEXT), 
                                    bot.handleMedia)
 
     bot.app.add_handler(CommandHandler("start", commands.start, filters.ChatType.PRIVATE))

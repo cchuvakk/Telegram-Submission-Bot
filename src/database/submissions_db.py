@@ -117,7 +117,10 @@ class SubmissionsDB:
             return result
         
         
-    async def insertSubmission(self, tg_userid: int, submission_type: str, file_id: str, tg_message_id: str, anonymous_submission: int, file_caption: str) -> int:
+    async def insertSubmission(self, tg_userid: int, 
+                               submission_type: str, file_id: str, 
+                               tg_message_id: str, anonymous_submission: int, 
+                               file_caption: str) -> int:
         async with aiosqlite.connect(self.__dbname) as db:
             query = 'INSERT INTO submissions (tg_userid, submission_type, tg_message_id, file_id, sent_to_channel, anonymous, file_caption) values (?, ?, ?, ?, ?, ?, ?)'
             cursor = await db.cursor()
